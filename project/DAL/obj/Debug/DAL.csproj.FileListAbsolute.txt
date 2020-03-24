@@ -1,0 +1,11 @@
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\bin\Debug\DAL.dll.config
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\bin\Debug\DAL.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\bin\Debug\DAL.pdb
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\bin\Debug\EntityFramework.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\bin\Debug\EntityFramework.SqlServer.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\bin\Debug\EntityFramework.xml
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\bin\Debug\EntityFramework.SqlServer.xml
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\obj\Debug\DAL.csproj.CopyComplete
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\obj\Debug\DAL.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DAL\obj\Debug\DAL.pdb

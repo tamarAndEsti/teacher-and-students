@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Esti_TamarModelStoreContainer" CdmEntityContainer="OurProjectEntities">
+    <EntitySetMapping Name="joinedFile">
+      <EntityTypeMapping TypeName="Esti_TamarModel.joinedFile">
+        <MappingFragment StoreEntitySet="joinedFile">
+          <ScalarProperty Name="fileId" ColumnName="fileId" />
+          <ScalarProperty Name="joinedTo" ColumnName="joinedTo" />
+          <ScalarProperty Name="filePath" ColumnName="filePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="questionOrAnswer">
+      <EntityTypeMapping TypeName="Esti_TamarModel.questionOrAnswer">
+        <MappingFragment StoreEntitySet="questionOrAnswer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="txt" ColumnName="txt" />
+          <ScalarProperty Name="finish" ColumnName="finish" />
+          <ScalarProperty Name="listingDate" ColumnName="listingDate" />
+          <ScalarProperty Name="parentId" ColumnName="parentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subjects">
+      <EntityTypeMapping TypeName="Esti_TamarModel.subjects">
+        <MappingFragment StoreEntitySet="subjects">
+          <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+          <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="Esti_TamarModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
+          <ScalarProperty Name="userLastName" ColumnName="userLastName" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userStatus" ColumnName="userStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

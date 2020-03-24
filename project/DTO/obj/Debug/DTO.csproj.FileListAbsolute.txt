@@ -1,0 +1,15 @@
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\DTO.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\DTO.pdb
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\DAL.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\EntityFramework.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\DAL.pdb
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\DAL.dll.config
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\EntityFramework.xml
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\obj\Debug\DTO.csproj.CopyComplete
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\obj\Debug\DTO.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\obj\Debug\DTO.pdb
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\DTO.dll.config
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\EntityFramework.SqlServer.dll
+T:\Group1\הכנה לפרויקט\תמר דיין\project\DTO\bin\Debug\EntityFramework.SqlServer.xml

@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Esti_TamarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="joinedFile">
+          <Key>
+            <PropertyRef Name="fileId" />
+          </Key>
+          <Property Name="fileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="joinedTo" Type="int" Nullable="false" />
+          <Property Name="filePath" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="questionOrAnswer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subjectId" Type="int" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="txt" Type="varchar(max)" Nullable="false" />
+          <Property Name="finish" Type="bit" />
+          <Property Name="listingDate" Type="datetime" Nullable="false" />
+          <Property Name="parentId" Type="int" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="subjectId" />
+          </Key>
+          <Property Name="subjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subjectName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userFirstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="userLastName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="userPassword" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="userEmail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="userStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__joinedFil__joine__0F975522">
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="1" />
+          <End Role="joinedFile" Type="Self.joinedFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionOrAnswer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="joinedFile">
+              <PropertyRef Name="joinedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__questionO__subje__08EA5793">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="subjectId" />
+            </Principal>
+            <Dependent Role="questionOrAnswer">
+              <PropertyRef Name="subjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__questionO__userI__09DE7BCC">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="questionOrAnswer">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__questionOrAn__id__0AD2A005">
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="0..1" />
+          <End Role="questionOrAnswer1" Type="Self.questionOrAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionOrAnswer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="questionOrAnswer1">
+              <PropertyRef Name="parentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Esti_TamarModelStoreContainer">
+          <EntitySet Name="joinedFile" EntityType="Self.joinedFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="questionOrAnswer" EntityType="Self.questionOrAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__joinedFil__joine__0F975522" Association="Self.FK__joinedFil__joine__0F975522">
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+            <End Role="joinedFile" EntitySet="joinedFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__questionO__subje__08EA5793" Association="Self.FK__questionO__subje__08EA5793">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__questionO__userI__09DE7BCC" Association="Self.FK__questionO__userI__09DE7BCC">
+            <End Role="users" EntitySet="users" />
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__questionOrAn__id__0AD2A005" Association="Self.FK__questionOrAn__id__0AD2A005">
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+            <End Role="questionOrAnswer1" EntitySet="questionOrAnswer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Esti_TamarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="joinedFile">
+          <Key>
+            <PropertyRef Name="fileId" />
+          </Key>
+          <Property Name="fileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="joinedTo" Type="Int32" Nullable="false" />
+          <Property Name="filePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="questionOrAnswer" Relationship="Self.FK__joinedFil__joine__0F975522" FromRole="joinedFile" ToRole="questionOrAnswer" />
+        </EntityType>
+        <EntityType Name="questionOrAnswer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subjectId" Type="Int32" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="finish" Type="Boolean" />
+          <Property Name="listingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="parentId" Type="Int32" />
+          <NavigationProperty Name="joinedFile" Relationship="Self.FK__joinedFil__joine__0F975522" FromRole="questionOrAnswer" ToRole="joinedFile" />
+          <NavigationProperty Name="subjects" Relationship="Self.FK__questionO__subje__08EA5793" FromRole="questionOrAnswer" ToRole="subjects" />
+          <NavigationProperty Name="users" Relationship="Self.FK__questionO__userI__09DE7BCC" FromRole="questionOrAnswer" ToRole="users" />
+          <NavigationProperty Name="questionOrAnswer1" Relationship="Self.FK__questionOrAn__id__0AD2A005" FromRole="questionOrAnswer" ToRole="questionOrAnswer1" />
+          <NavigationProperty Name="questionOrAnswer2" Relationship="Self.FK__questionOrAn__id__0AD2A005" FromRole="questionOrAnswer1" ToRole="questionOrAnswer" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="subjectId" />
+          </Key>
+          <Property Name="subjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subjectName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="questionOrAnswer" Relationship="Self.FK__questionO__subje__08EA5793" FromRole="subjects" ToRole="questionOrAnswer" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userFirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userLastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="questionOrAnswer" Relationship="Self.FK__questionO__userI__09DE7BCC" FromRole="users" ToRole="questionOrAnswer" />
+        </EntityType>
+        <Association Name="FK__joinedFil__joine__0F975522">
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="1" />
+          <End Role="joinedFile" Type="Self.joinedFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionOrAnswer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="joinedFile">
+              <PropertyRef Name="joinedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__questionO__subje__08EA5793">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="subjectId" />
+            </Principal>
+            <Dependent Role="questionOrAnswer">
+              <PropertyRef Name="subjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__questionO__userI__09DE7BCC">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="questionOrAnswer">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__questionOrAn__id__0AD2A005">
+          <End Role="questionOrAnswer" Type="Self.questionOrAnswer" Multiplicity="0..1" />
+          <End Role="questionOrAnswer1" Type="Self.questionOrAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionOrAnswer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="questionOrAnswer1">
+              <PropertyRef Name="parentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OurProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="joinedFile" EntityType="Self.joinedFile" />
+          <EntitySet Name="questionOrAnswer" EntityType="Self.questionOrAnswer" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="FK__joinedFil__joine__0F975522" Association="Self.FK__joinedFil__joine__0F975522">
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+            <End Role="joinedFile" EntitySet="joinedFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__questionO__subje__08EA5793" Association="Self.FK__questionO__subje__08EA5793">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__questionO__userI__09DE7BCC" Association="Self.FK__questionO__userI__09DE7BCC">
+            <End Role="users" EntitySet="users" />
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__questionOrAn__id__0AD2A005" Association="Self.FK__questionOrAn__id__0AD2A005">
+            <End Role="questionOrAnswer" EntitySet="questionOrAnswer" />
+            <End Role="questionOrAnswer1" EntitySet="questionOrAnswer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Esti_TamarModelStoreContainer" CdmEntityContainer="OurProjectEntities">
+          <EntitySetMapping Name="joinedFile">
+            <EntityTypeMapping TypeName="Esti_TamarModel.joinedFile">
+              <MappingFragment StoreEntitySet="joinedFile">
+                <ScalarProperty Name="fileId" ColumnName="fileId" />
+                <ScalarProperty Name="joinedTo" ColumnName="joinedTo" />
+                <ScalarProperty Name="filePath" ColumnName="filePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questionOrAnswer">
+            <EntityTypeMapping TypeName="Esti_TamarModel.questionOrAnswer">
+              <MappingFragment StoreEntitySet="questionOrAnswer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="txt" ColumnName="txt" />
+                <ScalarProperty Name="finish" ColumnName="finish" />
+                <ScalarProperty Name="listingDate" ColumnName="listingDate" />
+                <ScalarProperty Name="parentId" ColumnName="parentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subjects">
+            <EntityTypeMapping TypeName="Esti_TamarModel.subjects">
+              <MappingFragment StoreEntitySet="subjects">
+                <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+                <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="Esti_TamarModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
+                <ScalarProperty Name="userLastName" ColumnName="userLastName" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="userStatus" ColumnName="userStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
