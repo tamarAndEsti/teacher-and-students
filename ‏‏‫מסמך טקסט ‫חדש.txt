@@ -1,1 +1,9 @@
+sql
 https://www.manageengine.com/products/active-directory-audit/kb/how-to/how-to-check-sql-server-version-name-using-command-prompt.html
+
+git
+git pull-שליפת השינויים האחרונים
+git add .-הוספה של קבצים חדשים ו עדכון
+ "" git commit -m-אשור הפעולה +שם השינוי
+git pull
+git push -u origin mster-דחיפת השינוייים
